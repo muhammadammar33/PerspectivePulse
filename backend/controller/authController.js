@@ -142,6 +142,64 @@ const authController = {
         }
     },
     
+    async logout(req, res, next) {
+        // 1. delete refresh token from db
+        // 2. response
+        const { refreshToken } = req.cookies;
+        try {
+            await RefreshToken.deleteOne({ token: refreshToken });
+        }
+        catch (error) {
+            return next(error);
+        }
+        res.clearCookie('accessToken');
+
+        res.clearCookie('refreshToken');
+        return res.status(200).json({
+            message: "Logout successful",
+            auth: false,
+        });
+    },
+
+    async refresh(req, res, next) {
+        // 1.get refreshToken from cookies
+        // 2. verify refreshToken
+        // 3. generate new Tokens
+        // 4. update db, return response
+        const { refreshToken } = req.cookies;
+        try {
+            const payload = await JWTService.verifyRefreshToken(refreshToken);
+
+            const accessToken = JWTService.signAccessToken({ _id: payload._id }, '30m');
+            const newRefreshToken = JWTService.signRefreshToken({ _id: payload._id }, "60m");
+
+            try {
+                await RefreshToken.updateOne({ _id: payload._id }, { token: newRefreshToken }, { upsert: true })
+
+            } catch (error) {
+                return next(error);
+            }
+
+            res.cookie('accessToken', accessToken, {
+                maxAge: 30 * 60 * 1000,
+                httpOnly: true,
+            });
+            res.cookie('refreshToken', newRefreshToken, {
+                maxAge: 60 * 60 * 1000,
+                httpOnly: true,
+            });
+
+            const user = await User.findOne({ _id: payload._id });
+            return res.status(200).json({
+                message: "Refresh token successful",
+                user: user,
+                auth: true,
+            });
+        }
+        catch (error) {
+            return next(error);
+        }
+    }
 }
 
 module.exports = authController;
