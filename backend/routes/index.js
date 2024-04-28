@@ -1,6 +1,7 @@
 const express = require('express');
 const authController = require('../controller/authController');
 const blogController = require('../controller/blogController');
+const commentController = require('../controller/commentController');
 const router = express.Router();
 const auth = require('../middleware/auth');
 
@@ -42,7 +43,9 @@ router.delete('/blog/:id', auth, blogController.delete);
 
 //comment
 //create comment
+router.post('/comment', auth, commentController.create);
 //read all comments
+router.get('/comment/:id', auth, commentController.getById);
 //read comment by id
 
 module.exports = router;
