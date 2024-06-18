@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    background-color: black;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.activelink {
+    color:aqua;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.inactivelink {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #666;
+}
+
+.navbar-link.active {
+    color: #ff0000;
+}
