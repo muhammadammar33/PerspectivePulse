@@ -25,10 +25,70 @@
     transition: color 0.3s ease;
 }
 
-.navbar-link:hover {
-    color: #666;
+.inactivelink:hover {
+    color: #777;
 }
 
-.navbar-link.active {
-    color: #ff0000;
+.loginButton {
+    background-color: antiquewhite;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+}
+
+.loginButton:hover {
+    background-color: #777;
+    color: antiquewhite;
+}
+
+.signupButton {
+    margin-left: 20px;
+    background-color: antiquewhite;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+}
+
+.signupButton:hover {
+    background-color: #777;
+    color: antiquewhite;
+}
+
+.logoutButton{
+    background-color: antiquewhite;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+}
+
+.logoutButton:hover {
+    background-color: #777;
+    color: antiquewhite;
+}
+
+.separator {
+    height: 2px;
+    margin: 5px;
+    background: linear-gradient(to right, transparent, #777, transparent);
 }

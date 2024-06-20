@@ -1,0 +1,13 @@
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.separator {
+    height: 2px;
+    margin: 15px;
+    background: linear-gradient(to right, transparent, #777, transparent);
+}

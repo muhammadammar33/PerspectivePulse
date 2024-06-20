@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from './Navbar.module.css';
 
 function Navbar() {
+    const isAuth = false;
     return (
         <>
             <nav className={styles.navbar}>
@@ -9,10 +10,24 @@ function Navbar() {
                 <NavLink to='/blog' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Blog</NavLink>
                 <NavLink to='/about' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>About</NavLink>
                 <NavLink to='/contact' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Contact</NavLink>
-                <NavLink to='/login' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}><button className="loginButton">Log In</button></NavLink>
-                <NavLink to='/signup' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}><button className="signupButton">Sign Up</button></NavLink>
+                {isAuth 
+                ? 
+                <div>
+                    <NavLink to='/'>
+                        <button className={styles.logoutButton}>Log Out</button>
+                    </NavLink>
+                </div> 
+                : 
+                <div>
+                    <NavLink to='/login'>
+                        <button className={styles.loginButton}>Log In</button>
+                    </NavLink>
+                    <NavLink to='/signup'>
+                        <button className={styles.signupButton}>Sign Up</button>
+                    </NavLink>
+                </div>}
             </nav>
-            <div></div>
+            <div className={styles.separator}></div>
         </>
     );
 }
