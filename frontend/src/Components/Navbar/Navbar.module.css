@@ -4,6 +4,8 @@
     align-items: center;
     padding: 1rem 0;
     background-color: black;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .logo {
@@ -12,7 +14,8 @@
 }
 
 .activelink {
-    color:aqua;
+    text-decoration: none;
+    color: antiquewhite;
     font-size: 22px;
     font-weight: bold;
 }

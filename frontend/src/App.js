@@ -12,12 +12,16 @@ function App() {
           <Navbar />
           <Routes>
             <Route path='/' exact element={
-              <div className={styles.home}>
+              <div className={styles.main}>
                 <Home />
               </div>
               } />
-            <Route path='/about' element={<h1>About</h1>} />
-            <Route path='/contact' element={<h1>Contact</h1>} />
+            <Route path='/blog' element={<h1 className={styles.main}>Blog</h1>} />
+
+            <Route path='/about' element={<h1 className={styles.main}>About</h1>} />
+
+            <Route path='/contact' element={<h1 className={styles.main}>Contact</h1>} />
+
           </Routes>
           <Footer />
         </div>
