@@ -2,6 +2,7 @@ import styles from './App.module.css';
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home/Home';
+import Login from './Pages/Login/login';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Protected from './Components/Protected/Protected';
 import Error from './Pages/Error/Error';
@@ -55,7 +56,9 @@ function App() {
               path='/login' 
               exact
               element={
-              <h1 className={styles.main}>Login Page</h1>
+              <div className={styles.main}>
+                <Login />
+              </div>
               }
             />
 
