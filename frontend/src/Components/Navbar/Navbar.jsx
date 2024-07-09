@@ -1,8 +1,19 @@
 import { NavLink } from "react-router-dom";
 import styles from './Navbar.module.css';
+import { useSelector } from "react-redux";
+import { signout } from "../../api/internal";
+import { resetUser } from "../../store/userSlice";
+import { useDispatch } from "react-redux";
 
 function Navbar() {
-    const isAuth = false;
+
+    const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.user.auth);
+
+    const handleSignout = async () => {
+        await signout();
+        dispatch(resetUser());
+    };
     return (
         <>
             <nav className={styles.navbar}>
@@ -15,7 +26,7 @@ function Navbar() {
                 ? 
                 <div>
                     <NavLink to='/'>
-                        <button className={styles.logoutButton}>Log Out</button>
+                        <button className={styles.logoutButton} onClick={handleSignout}>Log Out</button>
                     </NavLink>
                 </div> 
                 : 

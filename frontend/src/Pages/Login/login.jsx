@@ -17,7 +17,7 @@ function Login() {
 
     const handleLogin = async () => {
         const data = {
-        username: values.username,
+        email: values.email,
         password: values.password,
         };
 
@@ -26,9 +26,9 @@ function Login() {
         if (response.status === 200) {
         // 1. setUser
         const user = {
-            _id: response.data.user._id,
+            _id: response.data.user.id,
             email: response.data.user.email,
-            username: response.data.user.username,
+            name: response.data.user.name,
             auth: response.data.auth,
         };
 
@@ -43,7 +43,7 @@ function Login() {
 
     const { values, touched, handleBlur, handleChange, errors } = useFormik({
         initialValues: {
-        username: "",
+        email: "",
         password: "",
         },
 
@@ -55,13 +55,13 @@ function Login() {
         <div className={styles.loginHeader}>Log in to your account</div>
         <TextInput
             type="text"
-            value={values.username}
-            name="username"
+            value={values.email}
+            name="email"
             onBlur={handleBlur}
             onChange={handleChange}
-            placeholder="username"
-            error={errors.username && touched.username ? 1 : undefined}
-            errormessage={errors.username}
+            placeholder="Email"
+            error={errors.email && touched.email ? 1 : undefined}
+            errormessage={errors.email}
         />
         <TextInput
             type="password"
@@ -69,7 +69,7 @@ function Login() {
             value={values.password}
             onBlur={handleBlur}
             onChange={handleChange}
-            placeholder="password"
+            placeholder="Password"
             error={errors.password && touched.password ? 1 : undefined}
             errormessage={errors.password}
         />
@@ -77,9 +77,9 @@ function Login() {
             className={styles.logInButton}
             onClick={handleLogin}
             disabled={
-            !values.username ||
+            !values.email ||
             !values.password ||
-            errors.username ||
+            errors.email ||
             errors.password
             }
         >

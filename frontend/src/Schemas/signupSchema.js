@@ -4,7 +4,8 @@ const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,25}$/;
 
 const erroMessage = "use lowercase, uppercase and digits";
 
-const loginSchema = yup.object().shape({
+const signupSchema = yup.object().shape({
+    name: yup.string().min(5).max(30).required("name is required"),
     email: yup
         .string()
         .email("enter a valid email")
@@ -14,7 +15,11 @@ const loginSchema = yup.object().shape({
         .min(8)
         .max(25)
         .matches(passwordPattern, { message: erroMessage })
-        .required(),
+        .required("password is required"),
+    confirmPassword: yup
+        .string()
+        .oneOf([yup.ref("password")], "passwords must match")
+        .required("password is required"),
 });
 
-export default loginSchema;
+export default signupSchema;

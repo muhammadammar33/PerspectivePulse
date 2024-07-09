@@ -3,12 +3,14 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/login';
+import Signup from './Pages/Signup/Signup';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Protected from './Components/Protected/Protected';
 import Error from './Pages/Error/Error';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const isAuth = false;
+  const isAuth = useSelector((state) => state.user.auth);
   return (
     <div className={styles.container}>
       <BrowserRouter>
@@ -56,9 +58,9 @@ function App() {
               path='/login' 
               exact
               element={
-              <div className={styles.main}>
-                <Login />
-              </div>
+                <div className={styles.main}>
+                  <Login />
+                </div>
               }
             />
 
@@ -66,7 +68,9 @@ function App() {
               path='/signup' 
               exact
               element={
-                <h1 className={styles.main}>Signup Page</h1>
+                <div className={styles.main}>
+                  <Signup />
+                </div>
               }
             />
 
