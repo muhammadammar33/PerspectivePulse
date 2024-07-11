@@ -36,6 +36,10 @@
     color: #6e8dfc;
 }
 
+.logInButton:disabled {
+    background-color: #ea3943;
+}
+
 .createAccount {
     margin-top: 30px;
     margin-left: 10px;

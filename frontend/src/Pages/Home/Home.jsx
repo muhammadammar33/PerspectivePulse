@@ -1,13 +1,47 @@
-import React from 'react';
+import { useState, useEffect } from "react";
+import { getNews } from "../../api/external";
+import styles from "./Home.module.css";
+import Loader from "../../Components/Loader/Loader";
 
-const Home = () => {
+function Home() {
+    const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+        (async function newsApiCall() {
+        const response = await getNews();
+        setArticles(response);
+        })();
+
+        // cleanup function
+        setArticles([]);
+    }, []);
+
+    const handleCardClick = (url) => {
+        window.open(url, "_blank");
+    };
+
+    if (articles.length === 0) {
+        return <Loader text="HomePage" />;
+    }
+
     return (
-        <div>
-            <h1>Welcome to PerspectivePulse!</h1>
-            <p>Explore the latest blog posts and discover new perspectives.</p>
-            {/* Add your blog post list or any other content here */}
+        <>            
+        <div className={styles.header}>Welcome to PerspectivePulse!</div>
+        <p>Explore the latest blog posts and discover new perspectives.</p>
+        <div className={styles.grid}>
+            {articles.map((article) => (
+            <div
+                className={styles.card}
+                key={article.url}
+                onClick={() => handleCardClick(article.url)}
+            >
+                <img src={article.urlToImage} alt="blog pic"/>
+                <h3>{article.title}</h3>
+            </div>
+            ))}
         </div>
+        </>
     );
-};
+}
 
 export default Home;

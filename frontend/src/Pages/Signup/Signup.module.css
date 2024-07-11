@@ -1,5 +1,5 @@
 .signupWrapper {
-    margin: 20px auto;
+    margin: 10px auto;
     width: 80vw;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
     font-weight: bold;
     width: inherit;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .signupButton {
@@ -33,6 +33,10 @@
 .signupButton:hover {
     background-color: white;
     color: #3861fb;
+}
+
+.signupButton:disabled {
+    background-color: #ea3943;
 }
 
 .login {
