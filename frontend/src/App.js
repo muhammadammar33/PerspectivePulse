@@ -4,6 +4,7 @@ import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/login';
 import Signup from './Pages/Signup/Signup';
+import Blog from './Pages/BLog/Blog';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Protected from './Components/Protected/Protected';
 import Error from './Pages/Error/Error';
@@ -27,11 +28,11 @@ function App() {
               } 
             />
             <Route 
-              path='/blog' 
+              path="/blog"
               exact
               element={
                 <Protected isAuth={isAuth}>
-                  <h1 className={styles.main}>Blog</h1>
+                  <h1 className={styles.main}><Blog /></h1>
                 </Protected>
               } 
             />
