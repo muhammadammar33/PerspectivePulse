@@ -26,7 +26,7 @@ function Blog() {
     }
     return (
         <>
-        <p>Explore the latest news and discover new perspectives.</p>
+        <p>Explore the latest blogs and discover new perspectives.</p>
         <div className={styles.blogsWrapper}>
         {blogs.map((blog) => (
             <div
