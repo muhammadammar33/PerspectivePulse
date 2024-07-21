@@ -10,12 +10,14 @@ const mongoIdPattern = /^[0-9a-fA-F]{24}$/;
 
 const blogController = {
     async create(req, res, next){
+
         const createBlogSchema = Joi.object({
             title: Joi.string().required(),
             author: Joi.string().regex(mongoIdPattern).required(),
             content: Joi.string().required(),
             photo: Joi.string().required(),
         });
+
         const { error } = createBlogSchema.validate(req.body);
         if(error){
             return next(error);
@@ -38,16 +40,34 @@ const blogController = {
         } catch (error) {
             return next(error);
         }
-        return res.status(201).json({newBlog});
+        // return res.status(201).json({newBlog});
+        const blogDto = new BlogDTO(newBlog);
+
+        return res.status(201).json({ blog: blogDto });
 
     },
     async getAll(req, res, next){
-        try{
+
+        try {
             const blogs = await Blog.find({});
-            return res.status(200).json(blogs);
-        }catch(error){
-            next(error);
+
+            const blogsDto = [];
+
+            for (let i = 0; i < blogs.length; i++) {
+                const dto = new BlogDTO(blogs[i]);
+                blogsDto.push(dto);
+            }
+
+            return res.status(200).json({ blogs: blogsDto });
+        } catch (error) {
+            return next(error);
         }
+        // try{
+        //     const blogs = await Blog.find({});
+        //     return res.status(200).json(blogs);
+        // }catch(error){
+        //     next(error);
+        // }
     },
     async getById(req, res, next){
         const { id } = req.params;

@@ -1,7 +1,7 @@
-const blog = require("../models/blog");
-
+// const blog = require("../models/blog");
 class BlogDTO{
-    costructor(blog) {
+    constructor(blog) {
+        this._id = blog._id;
         this.title = blog.title;
         this.content = blog.content;
         this.author = blog.author;

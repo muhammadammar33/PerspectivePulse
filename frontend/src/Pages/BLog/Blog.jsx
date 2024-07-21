@@ -14,7 +14,7 @@ function Blog() {
         const response = await getAllBlogs();
 
         if (response.status === 200) {
-            setBlogs(response);
+            setBlogs(response.data.blogs);
         }
         })();
 
