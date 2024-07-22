@@ -30,13 +30,13 @@ function Blog() {
         <div className={styles.blogsWrapper}>
         {blogs.map((blog) => (
             <div
-            id={blog._id}
-            className={styles.blog}
-            onClick={() => navigate(`/blog/${blog._id}`)}
+                id={blog._id}
+                className={styles.blog}
+                onClick={() => navigate(`/blog/${blog._id}`)}
             >
-            <h1>{blog.title}</h1>
-            <img src={blog.photo} alt={blog.title}/>
-            <p>{blog.content}</p>
+                <h1>{blog.title}</h1>
+                <img src={blog.photo} alt={blog.title}/>
+                <p>{blog.content}</p>
             </div>
         ))}
         </div>

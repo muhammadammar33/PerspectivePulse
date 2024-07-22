@@ -5,6 +5,8 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/login';
 import Signup from './Pages/Signup/Signup';
 import Blog from './Pages/BLog/Blog';
+import SubmitBlog from './Pages/SubmitBlog/SubmitBlog';
+import BlogDetails from './Pages/BlogDetails/BlogDetails';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Protected from './Components/Protected/Protected';
 import Error from './Pages/Error/Error';
@@ -36,13 +38,23 @@ function App() {
                 </Protected>
               } 
             />
+            
+            <Route 
+              path="/blog/:id"
+              exact
+              element={
+                <Protected isAuth={isAuth}>
+                  <h1 className={styles.main}><BlogDetails /></h1>
+                </Protected>
+              } 
+            />
 
             <Route 
               path='/submitBlog' 
               exact
               element={
                 <Protected isAuth={isAuth}>
-                  <h1 className={styles.main}>Submit a Blog</h1>
+                  <h1 className={styles.main}><SubmitBlog /></h1>
                 </Protected>
               }
             />
