@@ -68,10 +68,14 @@ const authController = {
         res.cookie('accessToken', accessToken, {
             maxAge: 30 * 60 * 1000,
             httpOnly: true,
+            sameSite: "None",
+            secure: true
         });
         res.cookie('refreshToken', refreshToken, {
             maxAge: 60 * 60 * 1000,
             httpOnly: true,
+            sameSite: "None",
+            secure: true
         });
 
         return res.status(201).json({
@@ -124,10 +128,14 @@ const authController = {
             res.cookie('accessToken', accessToken, {
                 maxAge: 30 * 60 * 1000,
                 httpOnly: true,
+                sameSite: "None",
+                secure: true
             });
             res.cookie('refreshToken', refreshToken, {
                 maxAge: 60 * 60 * 1000,
                 httpOnly: true,
+                sameSite: "None",
+                secure: true
             });
 
 
@@ -183,10 +191,14 @@ const authController = {
             res.cookie('accessToken', accessToken, {
                 maxAge: 30 * 60 * 1000,
                 httpOnly: true,
+                sameSite: "None",
+                secure: true
             });
             res.cookie('refreshToken', newRefreshToken, {
                 maxAge: 60 * 60 * 1000,
                 httpOnly: true,
+                sameSite: "None",
+                secure: true
             });
 
             const user = await User.findOne({ _id: payload._id });

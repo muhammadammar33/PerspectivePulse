@@ -1,10 +1,17 @@
 const Joi = require('joi');
 const fs = require('fs');
 const Blog = require('../models/blog');
-const {BACKEND_SERVER_PATH} = require('../config/index');
+const {BACKEND_SERVER_PATH, CLOUD_NAME, API_KEY, API_SECRET} = require('../config/index');
 const BlogDTO = require('../dto/blog');
 const BlogDetailsDTO = require('../dto/blog-details');
 const Comment = require('../models/comment');
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+    cloud_name: CLOUD_NAME, 
+    api_key: API_KEY, 
+    api_secret: API_SECRET
+});
 
 const mongoIdPattern = /^[0-9a-fA-F]{24}$/;
 
@@ -24,23 +31,34 @@ const blogController = {
         }
         const {title, author, content, photo} = req.body;
 
-        const buffer = Buffer.from(photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''), 'base64');
-        const imagePath = `${Date.now()}-${author}.png`;
+        // const buffer = Buffer.from(photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ''), 'base64');
+        // const imagePath = `${Date.now()}-${author}.png`;
+
+        // Save to cloudinary
+        let response;
 
         try {
-            fs.writeFileSync(`storage/${imagePath}`, buffer);
+        response = await cloudinary.uploader.upload(photo);
+        // fs.writeFileSync(`storage/${imagePath}`, buffer);
         } catch (error) {
-            return next(error);
+        return next(error);
         }
 
+        // save blog in db
         let newBlog;
         try {
-            newBlog = new Blog({title, author, content, photoPath: `${BACKEND_SERVER_PATH}/storage/${imagePath}`});
-            await newBlog.save();
+        newBlog = new Blog({
+            title,
+            author,
+            content,
+            photoPath: response.url,
+        });
+
+        await newBlog.save();
         } catch (error) {
-            return next(error);
+        return next(error);
         }
-        // return res.status(201).json({newBlog});
+
         const blogDto = new BlogDTO(newBlog);
 
         return res.status(201).json({ blog: blogDto });
@@ -127,10 +145,13 @@ const blogController = {
                 previousPhoto = previousPhoto.replace(`${BACKEND_SERVER_PATH}/`, '');
                 fs.unlinkSync(`storage/${previousPhoto}`);
             }
-            const buffer = Buffer.from(photo.replace(/^data:image\/(png|jpg|jpeg);base64, /, ''), 'base64');
-            const imagePath = `${Date.now()}-${author}.png`;
+            // const buffer = Buffer.from(photo.replace(/^data:image\/(png|jpg|jpeg);base64, /, ''), 'base64');
+            // const imagePath = `${Date.now()}-${author}.png`;
+
+            let response;
             try {
-                fs.writeFileSync(`storage/${imagePath}`, buffer);
+                response = await cloudinary.uploader.upload(photo);
+                // fs.writeFileSync(`storage/${imagePath}`, buffer);
             } catch (error) {
                 return next(error);
             }
@@ -139,7 +160,7 @@ const blogController = {
                 _id: blogId,
                 title,
                 content,
-                photoPath: blog.photoPath,
+                photoPath: response.url,
             });
         }
         else{
