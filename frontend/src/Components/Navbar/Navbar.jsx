@@ -21,7 +21,7 @@ function Navbar() {
                 <NavLink to='/' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Home</NavLink>
                 <NavLink to='/blog' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Blogs</NavLink>
                 <NavLink to='/submitBlog' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Submit a Blog</NavLink>
-                <NavLink to='/contact' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Contact</NavLink>
+                <NavLink to='/crypto' className={({isActive}) => isActive ? styles.activelink : styles.inactivelink}>Crypto</NavLink>
                 {isAuth 
                 ? 
                 <div>

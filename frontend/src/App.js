@@ -8,6 +8,7 @@ import Blog from './Pages/BLog/Blog';
 import SubmitBlog from './Pages/SubmitBlog/SubmitBlog';
 import BlogDetails from './Pages/BlogDetails/BlogDetails';
 import UpdateBlog from './Pages/UpdateBlog/UpdateBlog';
+import Crypto from './Pages/Crypto/Crypto';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Protected from './Components/Protected/Protected';
 import Error from './Pages/Error/Error';
@@ -76,10 +77,10 @@ function App() {
             />
 
             <Route 
-              path='/contact' 
+              path='/crypto' 
               exact
               element={
-                <h1 className={styles.main}>Contact</h1>
+                <h1 className={styles.main}><Crypto /></h1>
               }
             />
 

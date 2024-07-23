@@ -1,0 +1,65 @@
+.crypto {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-top: 20px;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #1e2a38;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, wheat, black, wheat);
+    border-radius: 10px;
+    border: 3px solid #1e2a38;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, black, wheat, black);
+  }
+}
+
+.table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.head {
+  background-color: #f2f2f2;
+}
+
+.head th {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  padding: 12px;
+}
+
+.tableRow td {
+  border-bottom: 1px solid #f2f2f2;
+  padding: 8px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.symbol {
+  width: 30px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
