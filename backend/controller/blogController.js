@@ -70,11 +70,36 @@ const blogController = {
         // }
     },
     async getById(req, res, next){
+        // const { id } = req.params;
+        // const blog = await Blog.findOne({_id: id}).populate('author');
+        // const blogDTO = new BlogDetailsDTO(blog);
+        // return res.status(200).json(blogDTO);
+
+        const getByIdSchema = Joi.object({
+        id: Joi.string().regex(mongoIdPattern).required(),
+        });
+
+        const { error } = getByIdSchema.validate(req.params);
+
+        if (error) {
+        return next(error);
+        }
+
+        let blog;
+
         const { id } = req.params;
-        const blog = await Blog.findOne({_id: id}).populate('author');
-        const blogDTO = new BlogDetailsDTO(blog);
-        return res.status(200).json(blogDTO);
+
+        try {
+        blog = await Blog.findOne({ _id: id }).populate("author");
+        } catch (error) {
+        return next(error);
+        }
+
+        const blogDto = new BlogDetailsDTO(blog);
+
+        return res.status(200).json({ blog: blogDto });
     },
+
     async update(req, res, next){
         const updateBlogSchema = Joi.object({
             title: Joi.string().required(),

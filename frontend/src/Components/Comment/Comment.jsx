@@ -6,7 +6,7 @@ function Comment({ comment }) {
     return (
         <div className={styles.comment}>
         <div className={styles.header}>
-            <div className={styles.author}>{comment.authorUsername}</div>
+            <div className={styles.author}>{comment.author}</div>
             <div className={styles.date}>{date}</div>
             <div className={styles.commentText}>{comment.content}</div>
         </div>

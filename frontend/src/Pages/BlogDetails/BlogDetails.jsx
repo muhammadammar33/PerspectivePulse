@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-    getBlogById,
-    deleteBlog,
-    postComment,
-    getCommentsById,
-} from "../../api/internal";
+import { getBlogById, deleteBlog, postComment, getCommentsById } from "../../api/internal";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 import styles from "./BlogDetails.module.css";
@@ -37,7 +32,7 @@ function BlogDetails() {
         const blogResponse = await getBlogById(blogId);
         if (blogResponse.status === 200) {
             // set ownership
-            setOwnsBlog(username === blogResponse.data.blog.authorUsername);
+            setOwnsBlog(username === blogResponse.data.blog.authorName);
             setBlog(blogResponse.data.blog);
         }
         }
@@ -78,7 +73,7 @@ function BlogDetails() {
             <div className={styles.meta}>
             <p>
                 @
-                {blog.authorUsername +
+                {blog.authorName +
                 " on " +
                 new Date(blog.createdAt).toDateString()}
             </p>

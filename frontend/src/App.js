@@ -7,14 +7,20 @@ import Signup from './Pages/Signup/Signup';
 import Blog from './Pages/BLog/Blog';
 import SubmitBlog from './Pages/SubmitBlog/SubmitBlog';
 import BlogDetails from './Pages/BlogDetails/BlogDetails';
+import UpdateBlog from './Pages/UpdateBlog/UpdateBlog';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Protected from './Components/Protected/Protected';
 import Error from './Pages/Error/Error';
 import { useSelector } from 'react-redux';
+import useAutoLogin from './hooks/useAutoLogin';
+import Loader from './Components/Loader/Loader';
 
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
-  return (
+
+  const loading = useAutoLogin();
+
+  return loading ? (<Loader text="..." />) : (
     <div className={styles.container}>
       <BrowserRouter>
         <div className={styles.layout}>
@@ -45,6 +51,16 @@ function App() {
               element={
                 <Protected isAuth={isAuth}>
                   <h1 className={styles.main}><BlogDetails /></h1>
+                </Protected>
+              } 
+            />
+
+            <Route 
+              path="/blog-update/:id"
+              exact
+              element={
+                <Protected isAuth={isAuth}>
+                  <h1 className={styles.main}><UpdateBlog /></h1>
                 </Protected>
               } 
             />
