@@ -56,3 +56,18 @@
 .update:disabled {
     background-color: #ea3943;
 }
+
+@media (max-width: 768px) {
+    .photoPrompt {
+        width: 90%;
+        gap: 10px;
+    }
+
+    .content {
+        width: 90%;
+    }
+
+    .update {
+        width: 50%;
+    }
+}

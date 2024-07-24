@@ -1,16 +1,49 @@
 .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
     background-color: black;
     width: 100%;
     margin: 0 auto;
 }
 
+.menuIcon {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: antiquewhite;
+}
+
+.navLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    width: 70%;
+    margin: 0 auto;
+    gap: 20px;
+    margin-right: 1%;
+}
+
+.navLinks.showMenu {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    text-align: center;
+}
+
+.navLinks a {
+    display: block;
+    padding: 10px 0;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    right: 0;
 }
 
 .activelink {
@@ -27,6 +60,10 @@
 
 .inactivelink:hover {
     color: #777;
+}
+
+.buttons {
+    display: flex;
 }
 
 .loginButton {
@@ -68,7 +105,7 @@
     color: antiquewhite;
 }
 
-.logoutButton{
+.logoutButton {
     background-color: antiquewhite;
     color: black;
     padding: 10px 15px;
@@ -91,4 +128,23 @@
     height: 2px;
     margin: 5px;
     background: linear-gradient(to right, transparent, #777, transparent);
+}
+
+@media (max-width: 768px) {
+    .menuIcon {
+        display: block;
+    }
+
+    .buttons {
+        position: absolute;
+        width: 100%;
+        padding-left: 23%;
+    }
+
+    .navLinks {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 }

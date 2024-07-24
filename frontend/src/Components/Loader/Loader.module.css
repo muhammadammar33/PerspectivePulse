@@ -6,3 +6,10 @@
     justify-content: center;
     height: calc(100vh - 400px);
 }
+
+@media (max-width: 768px) {
+    .loaderWrapper {
+        height: calc(100vh - 150px);
+        font-size: medium;
+    }
+}

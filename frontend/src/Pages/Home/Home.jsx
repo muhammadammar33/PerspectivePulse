@@ -27,7 +27,7 @@ function Home() {
     return (
         <>            
         <div className={styles.header}>Welcome to PerspectivePulse!</div>
-        <p>Explore the latest news and discover new perspectives.</p>
+        <p className={styles.headline}>Explore the latest news and discover new perspectives.</p>
         <div className={styles.grid}>
             {articles.map((article) => (
             <div

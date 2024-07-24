@@ -22,3 +22,13 @@
     text-align: left;
     width: 30%;
 }
+
+@media (max-width: 768px) {
+    .textInputWrapper input{
+        width: 80%;
+    }
+
+    .errorMessage{
+        width: 80%;
+    }
+}

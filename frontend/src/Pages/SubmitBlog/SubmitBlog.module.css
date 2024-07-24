@@ -60,3 +60,17 @@
 .submit:disabled {
     background-color: #ea3943;
 }
+
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+    }
+
+    .photoPrompt {
+        width: 90%;
+    }
+
+    .submit {
+        width: 20%;
+    }
+}

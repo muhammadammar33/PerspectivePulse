@@ -30,6 +30,8 @@ function Crypto() {
     };
 
     return (
+        <>
+        <h1 className={styles.header}>Top 10 Cryptos</h1>
         <div className={styles.crypto}>
             <table className={styles.table}>
             <thead>
@@ -78,6 +80,7 @@ function Crypto() {
             </tbody>
             </table>
         </div>
+        </>
     );
 }
 

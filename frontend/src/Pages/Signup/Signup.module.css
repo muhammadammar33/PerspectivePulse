@@ -54,3 +54,21 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    .signupWrapper {
+        width: 90vw;
+    }
+
+    .signupButton {
+        width: 20%;
+    }
+
+    .signupHeader {
+        font-size: 32px;
+    }
+
+    .signupButton {
+        width: 30%;
+    }
+}

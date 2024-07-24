@@ -110,3 +110,32 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 768px) {
+    .detailsWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 10px 20px;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .editButton {
+        margin: 10px 0;
+    }
+
+    .deleteButton {
+        margin: 10px 0;
+    }
+
+    .input {
+        width: 100%;
+    }
+}

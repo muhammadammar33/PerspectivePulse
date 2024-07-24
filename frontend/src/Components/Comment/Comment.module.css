@@ -27,3 +27,10 @@
     font-size: 18px;
     padding: 5px 0;
 }
+
+@media (max-width: 768px) {
+    .comment {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

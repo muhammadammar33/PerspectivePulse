@@ -68,3 +68,14 @@
     margin-top: 10px;
     font-size: medium;
 }
+
+@media (max-width: 768px) {
+    .blog {
+        width: 90%;
+    }
+
+    .blog img {
+        width: 200px;
+        height: 200px;
+    }
+}

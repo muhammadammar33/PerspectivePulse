@@ -1,5 +1,5 @@
 .crypto {
-  max-height: 70vh;
+  max-height: 65vh;
   overflow-y: auto;
   padding-right: 10px;
   margin-top: 20px;
@@ -34,6 +34,13 @@
   background-color: #f2f2f2;
 }
 
+.header {
+  font-weight: bold;
+  width: inherit;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .head th {
   font-weight: bold;
   font-size: 30px;
@@ -62,4 +69,39 @@
   display: flex;
   margin: 0 auto;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+  .table {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .head th {
+    font-size: 16px;
+  }
+
+  .tableRow td {
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 60%;
+    gap: 10px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .header {
+    font-size: 32px;
+    margin: 25px auto;
+  }
+
+  .symbol {
+    width: 14px;
+  }
 }
