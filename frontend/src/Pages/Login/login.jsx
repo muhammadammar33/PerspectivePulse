@@ -26,7 +26,7 @@ function Login() {
         if (response.status === 200) {
         // 1. setUser
         const user = {
-            _id: response.data.user.id,
+            // _id: response.data.user.id,
             email: response.data.user.email,
             name: response.data.user.name,
             auth: response.data.auth,
