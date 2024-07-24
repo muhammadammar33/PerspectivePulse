@@ -63,7 +63,8 @@
     font-weight: bold;
 }
 
-p {
+.content {
     text-align: center;
     margin-top: 10px;
+    font-size: medium;
 }

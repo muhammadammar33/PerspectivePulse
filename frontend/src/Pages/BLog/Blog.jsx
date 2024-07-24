@@ -24,6 +24,15 @@ function Blog() {
     if (blogs.length === 0) {
         return <Loader text="Blogs" />;
     }
+
+    const truncateContent = (content, wordLimit) => {
+        const words = content.split(' ');
+        if (words.length > wordLimit) {
+            return words.slice(0, wordLimit).join(' ') + '...';
+        }
+        return content;
+    };
+
     return (
         <>
         <p>Explore the latest blogs and discover new perspectives.</p>
@@ -36,7 +45,9 @@ function Blog() {
             >
                 <h1>{blog.title}</h1>
                 <img src={blog.photo} alt={blog.title}/>
-                <p>{blog.content}</p>
+                <div className={styles.content}>
+                    {truncateContent(blog.content, 100)}
+                </div>
             </div>
         ))}
         </div>
